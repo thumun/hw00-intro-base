@@ -24,6 +24,8 @@ class test {
   }
 };
 
+let deltaTime: number = 0.0; 
+
 let icosphere: Icosphere;
 let square: Square;
 let cube: Cube;
@@ -80,12 +82,14 @@ function main() {
   gl.enable(gl.DEPTH_TEST);
 
   const lambert = new ShaderProgram([
-    new Shader(gl.VERTEX_SHADER, require('./shaders/lambert-vert.glsl')),
+    //new Shader(gl.VERTEX_SHADER, require('./shaders/lambert-vert.glsl')),
+    new Shader(gl.VERTEX_SHADER, require('./shaders/noise-vert.glsl')),
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/lambert-frag.glsl')),
   ]);
 
   // This function will be called every frame
   function tick() {
+    deltaTime += 0.01;
     camera.update();
     stats.begin();
     gl.viewport(0, 0, window.innerWidth, window.innerHeight);
@@ -97,7 +101,7 @@ function main() {
       icosphere.create();
     }
 
-    renderer.render(camera, lambert, colortest, [
+    renderer.render(camera, lambert, colortest, deltaTime, [
       cube
       //icosphere,
       //square,
