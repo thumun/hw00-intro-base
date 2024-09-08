@@ -1,4 +1,4 @@
-import {vec3} from 'gl-matrix';
+import {vec3, vec4} from 'gl-matrix';
 const Stats = require('stats-js');
 import * as DAT from 'dat.gui';
 import Icosphere from './geometry/Icosphere';
@@ -14,6 +14,14 @@ import ShaderProgram, {Shader} from './rendering/gl/ShaderProgram';
 const controls = {
   tesselations: 5,
   'Load Scene': loadScene, // A function pointer, essentially
+  //'Add Color': [0, 0, 0, 1.0],
+};
+
+class test {
+  color: vec4 
+  constructor(){
+    this.color = [1, 1, 1, 1.0]
+  }
 };
 
 let icosphere: Icosphere;
@@ -39,10 +47,18 @@ function main() {
   stats.domElement.style.top = '0px';
   document.body.appendChild(stats.domElement);
 
+  var testObj = new test();
+  var colortest = vec4.fromValues(0, 0, 0, 1);
+
   // Add controls to the gui
   const gui = new DAT.GUI();
   gui.add(controls, 'tesselations', 0, 8).step(1);
   gui.add(controls, 'Load Scene');
+  const colorFolder = gui.addFolder("Color");
+  const color = colorFolder.addColor(testObj, 'color');
+  color.onChange((value) => {colortest = [value[0]/255.0, value[1]/255.0, value[2]/255.0, 1]});
+
+  console.log(testObj.color);
 
   // get canvas and webgl context
   const canvas = <HTMLCanvasElement> document.getElementById('canvas');
@@ -80,7 +96,8 @@ function main() {
       icosphere = new Icosphere(vec3.fromValues(0, 0, 0), 1, prevTesselations);
       icosphere.create();
     }
-    renderer.render(camera, lambert, [
+
+    renderer.render(camera, lambert, colortest, [
       cube
       //icosphere,
       //square,
