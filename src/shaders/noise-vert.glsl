@@ -38,19 +38,8 @@ void main()
                                                             // perpendicular to the surface after the surface is transformed by
                                                             // the model matrix.
 
-    vec4 pos = vec4(vs_Pos[0], vs_Pos[1], vs_Pos[2], vs_Pos[3]);
-    //pos.x += (sin(u_DeltaTime * 0.2));
-    //pos.y += (sin(u_DeltaTime * 0.2));
-    pos.z = (sin(u_DeltaTime * 0.2)) * pos.z;
-
-    //pos.x += (sin(u_DeltaTime));
-    //pos.y += (sin(u_DeltaTime));
-    //pos.z += (sin(u_DeltaTime));
-
-    //pos.x += u_DeltaTime;
-    //pos.y += u_DeltaTime;
-    //pos.z += u_DeltaTime;
-
+    vec4 pos = vs_Pos + 0.1 * sin(3.14 * u_DeltaTime + vs_Pos.y);
+    
     vec4 modelposition = u_Model * pos;   // Temporarily store the transformed vertex positions for use below
 
     fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies
