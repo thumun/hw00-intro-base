@@ -13,7 +13,9 @@
 
 This project implements the following: 
  - a fragment shader that uses 3D Worley Noise to create a fun texture 
- - a vertex shader that animates the vertices of an object via a sine function (and thus, creating a wobbly effect) 
+ - a vertex shader that animates the vertices of an object via a sine function (and thus, creating a wobbly effect)
+
+Link to live site: https://thumun.github.io/hw00-intro-base/
 
 ![cube_red](https://github.com/thumun/hw00-intro-base/blob/master/redcube.png?raw=true)
 
