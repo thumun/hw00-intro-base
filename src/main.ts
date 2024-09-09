@@ -82,10 +82,15 @@ function main() {
   gl.enable(gl.DEPTH_TEST);
 
   const lambert = new ShaderProgram([
-    //new Shader(gl.VERTEX_SHADER, require('./shaders/lambert-vert.glsl')),
-    new Shader(gl.VERTEX_SHADER, require('./shaders/noise-vert.glsl')),
+    new Shader(gl.VERTEX_SHADER, require('./shaders/lambert-vert.glsl')),
     new Shader(gl.FRAGMENT_SHADER, require('./shaders/lambert-frag.glsl')),
   ]);
+
+  const noise = new ShaderProgram([
+    new Shader(gl.VERTEX_SHADER, require('./shaders/noise-vert.glsl')),
+    new Shader(gl.FRAGMENT_SHADER, require('./shaders/noise-frag.glsl')),
+  ]);
+  
 
   // This function will be called every frame
   function tick() {
@@ -101,7 +106,7 @@ function main() {
       icosphere.create();
     }
 
-    renderer.render(camera, lambert, colortest, deltaTime, [
+    renderer.render(camera, noise, colortest, deltaTime, true, 100, [
       cube
       //icosphere,
       //square,

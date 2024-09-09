@@ -25,6 +25,9 @@ class ShaderProgram {
   attrNor: number;
   attrCol: number;
 
+  //randomPts: WebGLUniformLocation; 
+  //randomPtsSize: WebGLUniformLocation;
+
   deltaTime:WebGLUniformLocation;
 
   unifModel: WebGLUniformLocation;
@@ -47,6 +50,10 @@ class ShaderProgram {
     this.attrNor = gl.getAttribLocation(this.prog, "vs_Nor");
     this.attrCol = gl.getAttribLocation(this.prog, "vs_Col");
     this.deltaTime = gl.getUniformLocation(this.prog, "u_DeltaTime");
+
+    //this.randomPts = gl.getUniformLocation(this.prog, "u_RandomPoints")
+    //this.randomPtsSize = gl.getUniformLocation(this.prog, "u_RandomPointsSize");
+
     this.unifModel      = gl.getUniformLocation(this.prog, "u_Model");
     this.unifModelInvTr = gl.getUniformLocation(this.prog, "u_ModelInvTr");
     this.unifViewProj   = gl.getUniformLocation(this.prog, "u_ViewProj");
@@ -93,6 +100,27 @@ class ShaderProgram {
     gl.uniform1f(this.deltaTime, time);
   }
 
+  /*
+  // setting rnd points for the noise fs 
+  setRandomPoints(pointNum: number){
+    //let randomArr: Array<number> = [];
+    let randomArr = [];
+    
+    for (let i = 0; i < pointNum; i++)
+      {
+        // picked 5 x 5 x 5 as a random space for these points to be in 
+        // may change this later depending on how shader looks 
+        randomArr.push(Math.random() * 5);
+        randomArr.push(Math.random() * 5);
+        randomArr.push(Math.random() * 5);
+
+      }
+
+    gl.uniform3fv(this.randomPts, randomArr);
+    gl.uniform1f(this.randomPtsSize, randomArr.length);
+
+  }
+    */
 
   draw(d: Drawable) {
     this.use();
