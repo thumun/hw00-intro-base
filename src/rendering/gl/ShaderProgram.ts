@@ -24,10 +24,8 @@ class ShaderProgram {
   attrPos: number;
   attrNor: number;
   attrCol: number;
-
   //randomPts: WebGLUniformLocation; 
   //randomPtsSize: WebGLUniformLocation;
-
   deltaTime:WebGLUniformLocation;
 
   unifModel: WebGLUniformLocation;
