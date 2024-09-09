@@ -8,7 +8,7 @@
 ## Description 
 
 <p align="center">
-![cube_gif](https://github.com/thumun/hw00-intro-base/blob/master/cube_demo.gif?raw=true)
+  <img src="https://github.com/thumun/hw00-intro-base/blob/master/cube_demo.gif?raw=true"/>
 </p>
 
 This project implements the following: 
