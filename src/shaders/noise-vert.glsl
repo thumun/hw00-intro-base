@@ -40,7 +40,7 @@ void main()
                                                             // the model matrix.
 
     vec4 pos = vs_Pos + 0.1 * sin(3.14 * u_DeltaTime + vs_Pos.y); // moving the verticies based on sin & time
-    
+
     vec4 modelposition = u_Model * pos;   // Temporarily store the transformed vertex positions for use below
 
     fs_LightVec = lightPos - modelposition;  // Compute the direction in which the light source lies
