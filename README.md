@@ -5,6 +5,15 @@
 </p>
 <p align="center">(source: Ken Perlin)</p>
 
+## Description 
+
+![cube_gif](https://github.com/thumun/hw00-intro-base/blob/master/cube_demo.gif?raw=true)
+This project implements the following: 
+ - a fragment shader that uses 3D Worley Noise to create a fun texture 
+ - a vertex shader that animates the vertices of an object via a sine function (and thus, creating a wobbly effect) 
+
+![cube_red](https://github.com/thumun/hw00-intro-base/blob/master/redcube.png?raw=true)
+
 ## Objective
 - Check that the tools and build configuration we will be using for the class works.
 - Start learning Typescript and WebGL2
