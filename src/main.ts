@@ -107,8 +107,8 @@ function main() {
     }
 
     renderer.render(camera, noise, colortest, deltaTime, true, 100, [
-      cube
-      //icosphere,
+      //cube
+      icosphere,
       //square,
     ]);
     stats.end();
